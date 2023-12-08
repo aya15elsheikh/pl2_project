@@ -9,7 +9,7 @@ public class create_files {
     {
 
     }
-    public void create (String name)
+    public void Create (String name)
     {
         try {
             File file = new File(name+".txt");
@@ -36,7 +36,7 @@ public class create_files {
         }
     }
 
-    public void read (String name)
+    public void Read (String name)
     {
         try {
             File file= new File(name+".txt");
@@ -52,10 +52,10 @@ public class create_files {
         }
     }
 
-    public  void write (String name, String Data)
+    public  void Append  (String name, String Data)
     {
         try {
-            FileWriter Writer = new FileWriter(name+".txt");
+            FileWriter Writer = new FileWriter(name+".txt" , true );
             Writer.write(Data);
             Writer.close();
             System.out.println("Successfully written.");
