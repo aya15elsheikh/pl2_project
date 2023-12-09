@@ -2,17 +2,15 @@ import javax.xml.crypto.Data;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.Scanner;
-import java.io.FileNotFoundException;
-//import java.io.IOException;
 public class create_files {
     public create_files()
     {
 
     }
-    public void Create (String name)
+    public void Create (String path , String name)
     {
         try {
-            File file = new File(name+".txt");
+            File file = new File(path + name+".txt");
             if (file.createNewFile()) {
                 System.out.println("File created: " + file.getName());
                 }
@@ -25,9 +23,9 @@ public class create_files {
         }
     }
 
-    public void Delete(String name )
+    public void Delete(String path )
     {
-        File file = new File(name+".txt");
+        File file = new File(path);
         if (file.delete()) {
             System.out.println("The deleted file is : " + file.getName());
         }
@@ -36,27 +34,30 @@ public class create_files {
         }
     }
 
-    public void Read (String name)
+    public String [] Read (String path)
     {
+        String data []= new String[7];
         try {
-            File file= new File(name+".txt");
+            File file= new File(path);
             Scanner Reader = new Scanner(file);
+            int i=0;
             while (Reader.hasNextLine()) {
-                String data = Reader.nextLine();
-                System.out.println(data);
+                data [i]= Reader.nextLine();
+                i++;
             }
             Reader.close();
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        return data;
     }
 
-    public  void Append  (String name, String Data)
+    public  void Append  (String path, String Data)
     {
         try {
-            FileWriter Writer = new FileWriter(name+".txt" , true );
-            Writer.write(Data);
+            FileWriter Writer = new FileWriter(path, true );
+            Writer.write(Data +"\n");
             Writer.close();
             System.out.println("Successfully written.");
         }
@@ -64,5 +65,4 @@ public class create_files {
             System.out.println(e.getMessage());
         }
     }
-
 }
