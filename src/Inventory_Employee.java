@@ -9,7 +9,7 @@ public class Inventory_Employee extends Employee{
         super( ID , Username, password , Type);
     }
 
-    public boolean Add_product (String name  , int id , Date expiry ,String section , int quantity )
+    public boolean Add_product (String name  , int id , Date expiry ,String section , int quantity,int Special_Range )
     {  boolean flag = false;
         try {
             create_files c= new create_files();
@@ -19,6 +19,7 @@ public class Inventory_Employee extends Employee{
             c.Append(path +name+".txt", Integer.toString(id));
             c.Append(path +name+".txt", section);
             c.Append(path +name+".txt",Integer.toString(quantity));
+            c.Append(path +name+".txt",Integer.toString(Sdeedpecial_Range));
             SimpleDateFormat Formatter = new SimpleDateFormat("dd/MM/yyyy");
             String S_date= Formatter.format(expiry);
             c.Append(path +name+".txt",S_date);
@@ -45,10 +46,44 @@ public class Inventory_Employee extends Employee{
         return flag;
     }
 
-    public  boolean update_product(int id, String Section)
+    public  boolean update_product(String path_of_oldfile,String old_data ,String new_data )
     {
         boolean update_flag =false;
-       /*   implementation */
+       String oldfile="path_of_oldfile";
+        String temp="path_of_newfile";
+        File newfile =new File(temp);
+        try{
+        FileWriter fw=new FileWriter(temp,false);
+        BufferedWriter bw=new  BufferedWriter(fw);
+        PrintWriter pw=new PrintWriter(bw);
+        Scanner in=new Scanner(path_of_oldfile);
+        while(in.hasNext())
+        {
+            String name=in.next();
+            if(name.equals(old_data))
+            {
+                pw.println(new_data);
+            }else
+            {pw.println(name);
+            }
+            
+        }
+        in.close();
+        pw.flush();
+        pw.close();
+       new File (oldfile).delete();
+        File dump=new File(oldfile);
+        newfile.renameTo(dump);
+            System.out.println("update is succssful");
+    }
+   catch(Exception ex)
+   {
+        
+        System.out.println("Error!");
+    }
+    
+    
+}
         return update_flag;
     }
 
