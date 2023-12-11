@@ -5,12 +5,23 @@ public class Offers {
     private double  time;
     private double percentage;
 
+
     public Offers (String type ,double time , double percentage ){
         this.type = type;
         this.time=time;
         this.percentage=percentage;
 
     }
+    public String get_type(){
+        return type;
+    }
+    public double get_time(){
+        return time;
+    }
+    public double get_percentage(){
+        return percentage;
+    }
+
     public void addOffer(){
         Scanner input = new Scanner(System.in);
         System.out.println("Enter Offer type: ");
