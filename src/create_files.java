@@ -65,41 +65,5 @@ public class create_files {
             System.out.println(e.getMessage());
         }
     }
-     public void update(String path_of_oldfile,String old_data ,String new_data)
-    {
-        String oldfile="path_of_oldfile";
-        String temp="path_of_newfile";
-        File newfile =new File(temp);
-        try{
-        FileWriter fw=new FileWriter(temp,false);
-        BufferedWriter bw=new  BufferedWriter(fw);
-        PrintWriter pw=new PrintWriter(bw);
-        Scanner in=new Scanner(path_of_oldfile);
-        while(in.hasNext())
-        {
-            String name=in.next();
-            if(name.equals(old_data))
-            {
-                pw.println(new_data);
-            }else
-            {pw.println(name);
-            }
-            
-        }
-        in.close();
-        pw.flush();
-        pw.close();
-       new File (oldfile).delete();
-        File dump=new File(oldfile);
-        newfile.renameTo(dump);
-            System.out.println("update is succssful");
-    }
-   catch(Exception ex)
-   {
-        
-        System.out.println("Error!");
-    }
-    
-    
-}
+     
 }
