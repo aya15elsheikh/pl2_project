@@ -8,7 +8,7 @@ import java.util.Scanner;
 import java.io.FileWriter;
 public class Inventory_Employee extends Employee{
 
-    public Inventory_Employee (int ID ,String Username, String password , String Type)
+    public Inventory_Employee (String ID ,String Username, String password , String Type)
     {
         super( ID , Username, password , Type);
     }
@@ -103,11 +103,6 @@ public class Inventory_Employee extends Employee{
     }
 
     public void manage_Damages(int id ,String name)
-    {
-
-    }
-
-    public void Display_notifications ()
     {
 
     }

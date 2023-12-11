@@ -1,47 +1,38 @@
-public class Employee {
-   private int ID;
-   private String password;
-   private String Username;
-   private String Type;
-   public Employee()
-   {
+class Employee {
+    private String id;
+    private String password;
+    private String type;
+    private String Username;
 
-   }
-   public Employee (int ID ,String Username, String password , String Type)
-   {
-       this.ID = ID;
-       this.password = password;
-       this.Username = Username;
-       this.Type = Type;
-   }
-
-    public void setID(int ID) {
-        this.ID = ID;
+    public Employee(String id, String Username, String password, String type) {
+        this.id = id;
+        this.password = password;
+        this.type = type;
+        this.Username = Username;
     }
 
-    public int getID() {
-        return ID;
+    public String  getId() {
+        return id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setId(String  id) {
+        this.id = id;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public String getPassword() {
-        return password;
-    }
-    public void setUsername(String username) {
-        Username = username;
-    }
-    public String getUsername() {
-        return Username;
-    }
-
     public void setType(String type) {
-        Type = type;
-    }
-
-    public String getType() {
-        return Type;
+        this.type = type;
     }
 }
+
