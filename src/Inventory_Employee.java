@@ -1,11 +1,14 @@
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Scanner;
+import java.io.FileWriter;
 public class Inventory_Employee extends Employee{
 
-    public Inventory_Employee (int ID ,String Username, String password , String Type)
+    public Inventory_Employee (String ID ,String Username, String password , String Type)
     {
         super( ID , Username, password , Type);
     }
@@ -47,14 +50,13 @@ public class Inventory_Employee extends Employee{
         return flag;
     }
 
-    public  boolean update_product(String path_of_oldfile,String old_data ,String new_data )
+    public  void update_product(String path_of_oldfile,String old_data ,String new_data )
     {
-        boolean update_flag =false;
-       String oldfile="path_of_oldfile";
+        String oldfile="path_of_oldfile";
         String temp="path_of_newfile";
         File newfile =new File(temp);
         try{
-        FileWriter fw=new FileWriter(temp,false);
+        FileWriter fw = new FileWriter(temp,false);
         BufferedWriter bw=new  BufferedWriter(fw);
         PrintWriter pw=new PrintWriter(bw);
         Scanner in=new Scanner(path_of_oldfile);
@@ -77,17 +79,11 @@ public class Inventory_Employee extends Employee{
         newfile.renameTo(dump);
             System.out.println("update is succssful");
     }
-   catch(Exception ex)
-   {
-        
-        System.out.println("Error!");
-    }
-    
-    
-}
-        return update_flag;
-    }
+   catch(Exception ex) {
 
+       System.out.println("Error!");
+   }
+}
     public void Search_products (String name)
     {
         File file = new File(name+".txt");
@@ -107,11 +103,6 @@ public class Inventory_Employee extends Employee{
     }
 
     public void manage_Damages(int id ,String name)
-    {
-
-    }
-
-    public void Display_notifications ()
     {
 
     }
