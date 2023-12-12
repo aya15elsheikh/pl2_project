@@ -102,10 +102,20 @@ public class Inventory_Employee extends Employee{
         }
     }
 
-    public void manage_Damages(int id ,String name)
+      public void manage_the_damage(Products p)
     {
-
+       if(p!=null)
+       {
+           if(p.getDamaged_quantity()<=p.getQuantity())
+           {
+               p.setQuantity(p.getQuantity()-p.getDamaged_quantity());
+               System.out.println("manage the damaged product is successfully"); 
+           }
+       }else{
+           System.out.println("this product not exist");
     }
+    }
+    
 
     // subtract product >>> seller
     // notification
