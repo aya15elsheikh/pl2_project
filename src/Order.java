@@ -1,4 +1,3 @@
-import java.io.*;
 import java.util.*;
 
 public class Order {
@@ -43,37 +42,23 @@ public class Order {
    // -----------------------------------------------------------
 
 
-
    //add order:
     public boolean addOrder(Order order){
         try{
             create_files or= new create_files();
             String path= "C:\\Users\\ibgam\\Documents\\GitHub\\pl2_project\\Orders\\";
             or.Create(path,orderName);
-            or.Append(path, "\n"+"Order ID:"+order.getOrderId()+"\t Seller ID:"+order.getSellerId()
+            or.Append(path, "\n"+"Order ID:"+order.getOrderId()
+            +"\t Seller ID:"+order.getSellerId()
             +"\t Order Date:"+order.getOrderDate()
-            +"\t Quantity:"+product.getQuantity()+"\n" + order.toString());
+            +"\t Quantity:"+product.getQuantity()
+            +"\n" + order.toString());
             return true;
-        }catch (Exception ex) {System.out.println(ex.getMessage());
-        return false;}
-        
-    }
-
-  //search Orders
-    public  boolean searchOrder(String name){
-        File file = new File(name+".txt");
-        if (file.exists()){
-          return true;
-        }  
-        else {
+        }catch (Exception ex) {
+            System.out.println(ex.getMessage());
             return false;
         }
         
-    }
-
-    //delete Orders:
-    public boolean cancelOrder(String orderName){
-        return true;
     }
 
     
