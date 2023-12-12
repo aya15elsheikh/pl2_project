@@ -3,6 +3,7 @@ public class Employee {
    private String password;
    private String Username;
    private String Type;
+   
    public Employee()
    {
 
