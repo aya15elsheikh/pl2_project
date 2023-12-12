@@ -115,6 +115,13 @@ public class Inventory_Employee extends Employee{
            System.out.println("this product not exist");
     }
     }
+    public void list_product(Products p)
+{
+    System.out.println("ID:"+p.getId()+"\n"+"Name of product:"+p.getName()+"\n"+"Price of product:"+p.getPrice()+"\n"+
+            "Quantiti of peoduct:"+p.getQuantity()+"\n"+"Expiry Date of product:"+p.getExpiry_Date()+"\n"+"Special range of product:"+
+            p.getSpecial_Range()+"\n"+ "Damaged quantity of product:"+p.getDamaged_quantity());
+        
+}
     
 
     // subtract product >>> seller
