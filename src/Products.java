@@ -6,6 +6,7 @@ public class Products {
     private int quantity;
     private int price;
     private String Expiry_Date;
+    private int Damaged_quantity;
 
     Products(){
        this.Id++;
