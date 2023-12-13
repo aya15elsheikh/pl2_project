@@ -1,32 +1,27 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.lang.reflect.Array;
+import java.io.*;
 import java.util.*;
 
 public class Seller extends Employee{
     
-    private Object order;
     //public Seller(){} 
     public Seller(int sellerId, String sellerName, String password, String type){
         super(sellerId,sellerName, password, "Seller");
     }
 
     //setters:
-    @Override
+  /*  @Override
     public void setPassword(String password) {
         if(!password.matches("[a-zA-Z0-9]*")){
             System.out.println("Invalid Password! Only alphanumeric characters are allowed.");
         }else{
                 super.setPassword(password);
             }
-    }
+    }*/
 
 
     //-------------------------------------------------------------------------------
                 
-    //metho to list all products: 
+ /*  //metho to list all products: 
      public static void listAllProducts(){
         // list all files in products file: 
         File folder = new File("products.txt");
@@ -40,13 +35,14 @@ public class Seller extends Employee{
                     while ((line = br.readLine()) != null) {
                         System.out.printf("%3d %s\n",counter++,line);
                     }
+                    br.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }
     }
-    
+    */
 
     // search for product
     public static boolean searchForProduct(String productName){
