@@ -24,10 +24,11 @@ public class Order {
     public void setProduct(Products prod){this.product=prod;}
     public void setQuantity(int qty){this.quantity=qty;}
     //getters:
-    public int getOrderId(){return this.orderId;}
-    public int getSellerId() { return this.sellerId; }
-    public Date getOrderDate() { return new Date(this.orderDate.getTime());}  // Return a clone of the internal date
-    public Products geProducts(){return this.product;}
+    public String getOrderName(){return orderName;}
+    public int getOrderId(){return orderId;}
+    public int getSellerId() { return sellerId; }
+    public Date getOrderDate() { return new Date(this.orderDate.getTime());} 
+    public Products getProducts(){return product;}
 
     @Override
     public String toString() {
