@@ -20,8 +20,8 @@ public class system {
             while (Reader.hasNextLine()) {
                 // quantity warning
                 filename = Reader.nextLine();
-          //      q_in_file = c.read_line("D:\\FCAI\\y2 sem 1\\pl2\\javacodes\\pl2 project\\products\\" + filename + ".txt", 4);
-                quantity = 12;//Integer.parseInt(q_in_file);
+                q_in_file = c.read_line("D:\\FCAI\\y2 sem 1\\pl2\\javacodes\\pl2 project\\products\\" + filename + ".txt", 4);
+                quantity = Integer.parseInt(q_in_file);
 
                 System.out.println(quantity);
 
@@ -73,5 +73,12 @@ public class system {
         for (int  i=1; i<3 ; i++) {
             System.out.println(c.read_line("D:\\FCAI\\y2 sem 1\\pl2\\javacodes\\pl2 project\\notifications.txt", i));
         }
+    }
+}
+class Maino {
+public static void main(String[] args) {
+        System.out.print("Hello ! \n");
+        system s= new system();
+        s.Send_notification();
     }
 }

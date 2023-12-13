@@ -1,7 +1,5 @@
-import javax.xml.crypto.Data;
-import java.io.File;
-import java.io.FileWriter;
-import java.util.Scanner;
+import java.util.*;
+import java.io.*;
 public class create_files {
     public create_files()
     {
@@ -82,5 +80,43 @@ public class create_files {
             System.out.println(e.getMessage());
         }
     }
-     
+
+    public void update_file(String filePath, String oldString, String newString) {
+        try {
+            File fileToBeModified = new File(filePath);
+            BufferedReader reader = new BufferedReader(new FileReader(fileToBeModified));
+            String line = reader.readLine();
+            String oldContent = "";
+            while (line != null) {
+                oldContent += line + System.lineSeparator();
+                line = reader.readLine();
+            }
+            String newContent = oldContent.replaceAll(oldString, newString);
+            FileWriter writer = new FileWriter(fileToBeModified);
+            writer.write(newContent);
+            reader.close();
+            writer.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public  void searchFile(String filePath, String searchString) {
+        try {
+            File fileToBeSearched = new File(filePath);
+            BufferedReader reader = new BufferedReader(new FileReader(fileToBeSearched));
+            String line = reader.readLine();
+            int lineNumber = 1;
+            while (line != null) {
+                if (line.contains(searchString)) {
+                    System.out.println("Found at line " + lineNumber + ": " + line);
+                }
+                line = reader.readLine();
+                lineNumber++;
+            }
+            reader.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
