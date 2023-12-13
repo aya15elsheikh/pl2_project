@@ -7,8 +7,13 @@ import java.util.Date;
 import java.util.Scanner;
 import java.io.FileWriter;
 public class Marketing_Employee extends Employee {
+    int Id_M;
     public Marketing_Employee(int ID, String Username, String password, String Type) {
-        super(ID, Username, password, Type);
+        super( Username, password, Type);
+        this.Id_M = ID;
+    }
+    public int get_Id(){
+        return Id_M;
     }
 
     public void add_offer(String type, double time, double percentage) {
