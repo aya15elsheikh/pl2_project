@@ -4,8 +4,8 @@ public class Admin extends person {
     private List <Employee> employees;
     private Scanner scanner;
 
-    public Admin(String id, String Username, String password) {
-        super( Username , password ,"Admin",Integer.parseInt(id));
+    public Admin(int id, String Username, String password ,String type) {
+        super(Username,  password,"Admin" ,  id);
         employees = new ArrayList<>();
         scanner = new Scanner(System.in);
     }
