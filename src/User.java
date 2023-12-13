@@ -1,4 +1,4 @@
-Shahd Emam, [12/13/2023 10:05 PM]
+
 import java.io.*;
 
 import java.util.*;
