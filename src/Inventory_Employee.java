@@ -8,8 +8,15 @@ import java.util.Scanner;
 import java.io.FileWriter;
 public class Inventory_Employee extends Employee{
 
+    static private  int id_in=1;
+
     public Inventory_Employee(String username, String password, String Type) {
         super(username, password, "Inventory_Employee");
+        this.id_in++;
+    }
+    int gettid_in(int id)
+    {
+        return this.id_in;
     }
 
     public boolean Add_product (String name  , int id , Date expiry ,String section , int quantity,int Special_Range )
