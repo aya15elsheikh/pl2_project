@@ -2,8 +2,8 @@ public class Employee extends person {
     
     private String Type;
 
-    public Employee(String Type, String username, String password, int id) {
-        super(username, password, id);
+    public Employee(String Type, String username, String password,int id) {
+        super(username, password,Type , id);
         this.Type = Type;
     }
    @Override

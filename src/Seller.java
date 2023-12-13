@@ -7,8 +7,8 @@ import java.util.*;
 public class Seller extends Employee{
     
     //public Seller(){} 
-    public Seller(String sellerId, String sellerName, String password, String type){
-        super(sellerId,sellerName, password, "Seller");
+    public Seller(int sellerId, String sellerName, String password, String type){
+        super("Seller", sellerName, password, sellerId);
     }
 
     //setters:
@@ -24,7 +24,7 @@ public class Seller extends Employee{
 
     //-------------------------------------------------------------------------------
                 
-    //metho to list all products: 
+    //method  to list all products:
      public static void listAllProducts(){
         // list all files in products file: 
         File folder = new File("products.txt");

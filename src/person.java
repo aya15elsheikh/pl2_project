@@ -2,8 +2,7 @@ public abstract class person {
     String username;
     String password;
     String Type;
-    int id;
-    
+    int  id;
 
     person(String username, String password,String Type, int id) {
         this.username = username;
