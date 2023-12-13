@@ -3,7 +3,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.time.*;
 public class system {
-
     public void Send_notification()
     {
         String data="", q_in_file ,filename , expiry;
@@ -64,11 +63,11 @@ public class system {
         c.clearFile(path);
     }
 }
-class Main_o {
-public static void main(String[] args) {
-        System.out.print("Hello ! \n");
-        system s= new system();
-        s.Send_notification();
-        s.Display_notifications();
-    }
-}
+//class Main_o {
+//public static void main(String[] args) {
+//        System.out.print("Hello ! \n");
+//        system s= new system();
+//        s.Send_notification();
+//        s.Display_notifications();
+//    }
+//}

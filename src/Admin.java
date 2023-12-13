@@ -27,11 +27,7 @@ public class Admin extends person {
         String password = scanner.nextLine();
         System.out.print("Enter employee type: ");
         String type = scanner.nextLine();
-        System.out.print("Enter employee email: ");
-        String email = scanner.nextLine();
-        System.out.print("Enter employee phone number : ");
-        int p_num = scanner.nextInt();
-        Employee employee = new Employee(id,username , password, type);
+        Employee employee = new Employee(username , password, type, Integer.parseInt(id));
         employees.add(employee);
 
         System.out.println("Employee added successfully.");
