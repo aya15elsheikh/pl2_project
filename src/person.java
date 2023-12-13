@@ -9,8 +9,8 @@ public abstract class person {
         this.id = id;
     }
 
-    public abstract String setusername(String username);
-    public abstract void getusername();
+    public abstract void setusername(String username);
+    public abstract String getusername();
 
     public abstract void setId(String  id);
     public abstract String  getId();
