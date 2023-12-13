@@ -46,22 +46,24 @@ public class Seller extends Employee{
 
     // search for product
     public static boolean searchForProduct(String productName){
-        File file = new File(productName+".txt");
+        File file = new File("D:\\FCAI\\y2 sem 1\\pl2\\javacodes\\pl2 project\\products\\"+productName+".txt");
         if (file.exists()){
             try
-            {   create_files c= new create_files();
-                String path =  "C:\\Users\\ibgam\\Documents\\GitHub\\pl2_project\\products\\"+productName+".txt";
+            {
+                create_files c= new create_files();
+                String path =  "D:\\FCAI\\y2 sem 1\\pl2\\javacodes\\pl2 project\\products\\"+productName+".txt";
                 System.out.println(Arrays.toString(c.Read(path)));
             }catch (Exception ex){
                 System.out.println(ex.getMessage());
-            } 
+            }
         }
         else {
             System.out.println("Product not found \n");
-            return false;
         }
         return true;
     }
+
+
 
     // make new order
     public void makeNewOrder(String orderName,int orderId,int sellerId, Date orderDate ,Products product, int quantity) {
@@ -119,6 +121,12 @@ public class Seller extends Employee{
             int x=order.getProducts().getQuantity();
             order.getProducts().setQuantity(x++);
         } 
+    }
+
+    public static void main (String [] args)
+    {
+        Seller s= new Seller(1,"aya","111","S");
+        Seller.searchForProduct("Tomato");
     }
 }
 
