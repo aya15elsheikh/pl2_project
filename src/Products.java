@@ -41,6 +41,10 @@ public class Products {
     public void setExpiry_Date(String Expiry_Date) {
         this.Expiry_Date = Expiry_Date;
     }
+      public void setDamaged_quantity(int Damaged_quantity) {
+        this.Damaged_quantity = Damaged_quantity;
+    }
+
 
     public int getId() {
         return Id;
@@ -64,6 +68,9 @@ public class Products {
 
     public String getExpiry_Date() {
         return Expiry_Date;
+    }
+     public int getDamaged_quantity() {
+        return Damaged_quantity;
     }
 
     
