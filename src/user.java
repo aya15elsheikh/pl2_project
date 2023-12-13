@@ -1,4 +1,4 @@
-mport java.io.*;
+import java.io.*;
 
 import java.util.*;
 
@@ -62,9 +62,6 @@ class User {
     Scanner scanner = new Scanner(System.in);
 
     public void AddUser() throws IOException {
-
-
-
 
         while (true) {
             if (currentUser == null) {
