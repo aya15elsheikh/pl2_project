@@ -1,4 +1,4 @@
-abstract class person {
+public abstract class person {
     String username;
     String password;
     int id;
