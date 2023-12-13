@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.Scanner;
 import java.io.FileWriter;
 public class Marketing_Employee extends Employee {
-    public Marketing_Employee(String ID, String Username, String password, String Type) {
+    public Marketing_Employee(int ID, String Username, String password, String Type) {
         super(ID, Username, password, Type);
     }
 
