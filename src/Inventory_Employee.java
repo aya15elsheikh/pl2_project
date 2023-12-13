@@ -8,8 +8,8 @@ import java.util.Scanner;
 import java.io.FileWriter;
 public class Inventory_Employee extends Employee{
 
-   public Inventory_Employee(String username, String password, String Type, int id) {
-        super(id, username, password, Type);
+  public Inventory_Employee(String username, String password) {
+        super(username, password);
     }
 
     public boolean Add_product (String name  , int id , Date expiry ,String section , int quantity,int Special_Range )
