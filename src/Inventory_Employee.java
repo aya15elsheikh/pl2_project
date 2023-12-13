@@ -115,6 +115,7 @@ public class Inventory_Employee extends Employee{
            System.out.println("this product not exist");
     }
     }
+    
     public void list_product(Products p)
 {
     System.out.println("ID:"+p.getId()+"\n"+"Name of product:"+p.getName()+"\n"+"Price of product:"+p.getPrice()+"\n"+
