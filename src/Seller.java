@@ -72,13 +72,14 @@ public class Seller extends Employee{
                 create_files or= new create_files();
                 String path= "C:\\Users\\ibgam\\Documents\\GitHub\\pl2_project\\Orders\\";
                 or.Create(path,orderName);
-                or.Append(path, "\n"+"Order ID:"+String.valueOf(order.getOrderId())
+                or.Append(path, "\n"+"Order Name:"+order.getOrderName()
+                +"\t Order ID:"+String.valueOf(order.getOrderId())
                 +"\t Seller ID:"+String.valueOf(order.getSellerId())
                 +"\t Order Date:"+String.valueOf(order.getOrderDate())
                 +"\t Quantity:"+String.valueOf(product.getQuantity())
                 +"\n" + order.toString());
                 int x=product.getQuantity();
-                product.setQuantity(x++);
+                product.setQuantity(x--);
             }catch (Exception ex) {
                 System.out.println(ex.getMessage());
             } 

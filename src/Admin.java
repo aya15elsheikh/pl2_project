@@ -5,7 +5,7 @@ public class Admin extends person {
     private Scanner scanner;
 
     public Admin(String id, String Username, String password) {
-        super( Username , password , Integer.parseInt(id));
+        super( Username , password ,"Admin",Integer.parseInt(id));
         employees = new ArrayList<>();
         scanner = new Scanner(System.in);
     }
@@ -14,8 +14,43 @@ public class Admin extends person {
         this.username = username;
     }
 
+    @Override
+    public void setusername(String username) {
+
+    }
+
+    @Override
+    public String getusername() {
+        return null;
+    }
+
+    @Override
+    public void setId(String id) {
+
+    }
+
+    @Override
+    public String getId() {
+        return null;
+    }
+
+    @Override
+    public void setType(String type) {
+
+    }
+
+    @Override
+    public String getType() {
+        return null;
+    }
+
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String getPassword() {
+        return null;
     }
 
     public void addEmployee() {
