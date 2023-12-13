@@ -8,9 +8,8 @@ import java.util.Scanner;
 import java.io.FileWriter;
 public class Inventory_Employee extends Employee{
 
-    public Inventory_Employee (String ID ,String Username, String password , String Type)
-    {
-        super( ID , Username, password , Type);
+   public Inventory_Employee(String username, String password, String Type, int id) {
+        super(username, password, Type, id);
     }
 
     public boolean Add_product (String name  , int id , Date expiry ,String section , int quantity,int Special_Range )
@@ -74,16 +73,15 @@ public class Inventory_Employee extends Employee{
         in.close();
         pw.flush();
         pw.close();
-       new File (oldfile).delete();
+        new File (oldfile).delete();
         File dump=new File(oldfile);
         newfile.renameTo(dump);
             System.out.println("update is succssful");
-    }
-   catch(Exception ex) {
+        } catch(Exception ex) {
 
-       System.out.println("Error!");
-   }
-}
+            System.out.println("Error!");
+        }
+    }
     public void Search_products (String name)
     {
         File file = new File(name+".txt");
@@ -102,27 +100,27 @@ public class Inventory_Employee extends Employee{
         }
     }
 
-      public void manage_the_damage(Products p)
+    public void manage_the_damage(Products p)
     {
        if(p!=null)
        {
            if(p.getDamaged_quantity()<=p.getQuantity())
            {
                p.setQuantity(p.getQuantity()-p.getDamaged_quantity());
-               System.out.println("manage the damaged product is successfully"); 
+               System.out.println("manage the damaged product is successfully");
            }
        }else{
            System.out.println("this product not exist");
-    }
+       }
     }
     
     public void list_product(Products p)
-{
-    System.out.println("ID:"+p.getId()+"\n"+"Name of product:"+p.getName()+"\n"+"Price of product:"+p.getPrice()+"\n"+
+    {
+     System.out.println("ID:"+p.getId()+"\n"+"Name of product:"+p.getName()+"\n"+"Price of product:"+p.getPrice()+"\n"+
             "Quantiti of peoduct:"+p.getQuantity()+"\n"+"Expiry Date of product:"+p.getExpiry_Date()+"\n"+"Special range of product:"+
             p.getSpecial_Range()+"\n"+ "Damaged quantity of product:"+p.getDamaged_quantity());
-        
-}
+
+    }
     
 
     // subtract product >>> seller

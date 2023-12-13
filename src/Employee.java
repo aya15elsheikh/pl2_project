@@ -1,39 +1,34 @@
-
-class Employee {
-    private String id;
-    private String password;
+public class Employee extends person {
     private String type;
-    private String Username;
 
-    public Employee(String id, String Username, String password, String type) {
-        this.id = id;
-        this.password = password;
+    public Employee(int id, String Username, String password, String type) {
+        super(Username,  password, id);
         this.type = type;
-        this.Username = Username;
+    }
+    
+     public void setId(String  id) {
+        this.id =  Integer.parseInt(id);
     }
 
     public String  getId() {
-        return id;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setId(String  id) {
-        this.id = id;
+        return String.valueOf(id);
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public void setType(String type) {
         this.type = type;
     }
+
+    public String getType() {
+        return type;
+    }
+
 }
 

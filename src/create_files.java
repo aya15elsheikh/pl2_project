@@ -32,9 +32,23 @@ public class create_files {
         }
     }
 
+    public int countLines(String filename) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            int lineCount = 0;
+            while (reader.readLine() != null) {
+                lineCount++;
+            }
+            return lineCount;
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            return -1;
+        }
+    }
+
     public String [] Read (String path)
     {
-        String data []= new String[5];
+        int N = countLines(path);
+        String data []= new String[N];
         try {
             File file= new File(path);
             Scanner Reader = new Scanner(file);
@@ -50,7 +64,8 @@ public class create_files {
         }
         return data;
     }
-    public String read_line ( String path , int line )
+
+    public String Read ( String path , int line )
     {
         String data ="";
         try {
@@ -78,6 +93,28 @@ public class create_files {
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
+        }
+    }
+    public  void clearFile(String path) {
+        try (FileWriter writer = new FileWriter(path)) {
+            writer.write("");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void print_file (String path)
+    {
+        try {
+            File file= new File(path);
+            Scanner Reader = new Scanner(file);
+            while (Reader.hasNextLine()) {
+                System.out.println(Reader.nextLine());
+            }
+
+        }catch(Exception ex)
+        {
+            System.out.println(ex.getMessage());
         }
     }
 
@@ -119,4 +156,20 @@ public class create_files {
             System.out.println(e.getMessage());
         }
     }
+
+
+//    public boolean isDataExists(String filename, String targetData) {
+//        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+//            String line;
+//            while ((line = reader.readLine()) != null) {
+//                if (line.equals(targetData)) {
+//                    return true;
+//                }
+//            }
+//        } catch (IOException e) {
+//            System.out.println(e.getMessage());
+//        }
+//        return false;
+//    }
+
 }

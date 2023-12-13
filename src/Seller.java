@@ -1,30 +1,27 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 public class Seller extends Employee{
     
     //public Seller(){} 
-    public Seller(String sellerId, String sellerName, String password, String type){
+    public Seller(int sellerId, String sellerName, String password, String type){
         super(sellerId,sellerName, password, "Seller");
     }
 
     //setters:
-    @Override
+  /*  @Override
     public void setPassword(String password) {
         if(!password.matches("[a-zA-Z0-9]*")){
             System.out.println("Invalid Password! Only alphanumeric characters are allowed.");
         }else{
                 super.setPassword(password);
             }
-    }
+    }*/
 
 
     //-------------------------------------------------------------------------------
                 
-    //metho to list all products: 
+ /*  //metho to list all products: 
      public static void listAllProducts(){
         // list all files in products file: 
         File folder = new File("products.txt");
@@ -38,13 +35,14 @@ public class Seller extends Employee{
                     while ((line = br.readLine()) != null) {
                         System.out.printf("%3d %s\n",counter++,line);
                     }
+                    br.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }
     }
-    
+    */
 
     // search for product
     public static boolean searchForProduct(String productName){
@@ -68,17 +66,19 @@ public class Seller extends Employee{
     // make new order
     public void makeNewOrder(String orderName,int orderId,int sellerId, Date orderDate ,Products product, int quantity) {
         boolean exi= Seller.searchForProduct(product.getName());
-        if (exi != false && product.getQuantity() >= quantity) {
+        if (exi && product.getQuantity() >= quantity) {
             Order order = new Order(orderName, orderId,sellerId, orderDate, product, quantity); 
             try{
                 create_files or= new create_files();
                 String path= "C:\\Users\\ibgam\\Documents\\GitHub\\pl2_project\\Orders\\";
                 or.Create(path,orderName);
-                or.Append(path, "\n"+"Order ID:"+order.getOrderId()
-                +"\t Seller ID:"+order.getSellerId()
-                +"\t Order Date:"+order.getOrderDate()
-                +"\t Quantity:"+product.getQuantity()
+                or.Append(path, "\n"+"Order ID:"+String.valueOf(order.getOrderId())
+                +"\t Seller ID:"+String.valueOf(order.getSellerId())
+                +"\t Order Date:"+String.valueOf(order.getOrderDate())
+                +"\t Quantity:"+String.valueOf(product.getQuantity())
                 +"\n" + order.toString());
+                int x=product.getQuantity();
+                product.setQuantity(x++);
             }catch (Exception ex) {
                 System.out.println(ex.getMessage());
             } 
@@ -91,7 +91,7 @@ public class Seller extends Employee{
         if (file.exists()){
               try
             {   create_files c= new create_files();
-                String path =  "D:\\FCAI\\y2 sem 1\\pl2\\javacodes\\pl2 project\\orders\\"+orderName+".txt";
+                String path =  "C:\\Users\\ibgam\\Documents\\GitHub\\pl2_project\\Orders\\"+orderName+".txt";
                 System.out.println(Arrays.toString(c.Read(path)));
             }catch (Exception ex){
                 System.out.println(ex.getMessage());
@@ -106,21 +106,21 @@ public class Seller extends Employee{
     }
 
     //cancel an order
-    public boolean cancelOrder(String orderName){
-        File orderFile= new File(orderName+".txt");
-        if(!orderFile.exists())return false;
-        orderFile.delete();
-        return true; 
+    public void cancelOrder(Order order){
+        File orderFile= new File(order.getOrderName()+".txt");
+        if(!orderFile.exists()) System.out.println("order is not exist");
+        else{ 
+            create_files canceled= new create_files();
+            String path="C:\\Users\\ibgam\\Documents\\GitHub\\pl2_project\\orders\\cancledOrders\\";
+            canceled.Create(path, order.getOrderName());
+            canceled.Append(path, order.toString());
+            orderFile.delete();
+            int x=order.getProducts().getQuantity();
+            order.getProducts().setQuantity(x++);
+        } 
     }
-
-
-public static void main(String[] args) {
-
-      //chack the Seller class methods
-      
-
-
-    }
-
 }
+
+
+
 
