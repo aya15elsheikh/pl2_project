@@ -9,20 +9,13 @@ public abstract class person {
         this.id = id;
     }
 
-    public void setId(String  id) {
-        this.id =  Integer.parseInt(id);
-    }
+    public abstract String setusername(String username);
+    public abstract void getusername();
 
-    public String  getId() {
-        return String.valueOf(id);
-    }
+    public abstract void setId(String  id);
+    public abstract String  getId();
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPassword() {
-        return password;
-    }
+    public abstract void setPassword(String password);
+    public abstract String getPassword();
 
 }
