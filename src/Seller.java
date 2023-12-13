@@ -2,12 +2,14 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Seller extends Employee{
     
+    private Object order;
     //public Seller(){} 
-    public Seller(String sellerId, String sellerName, String password, String type){
+    public Seller(int sellerId, String sellerName, String password, String type){
         super(sellerId,sellerName, password, "Seller");
     }
 
@@ -68,17 +70,19 @@ public class Seller extends Employee{
     // make new order
     public void makeNewOrder(String orderName,int orderId,int sellerId, Date orderDate ,Products product, int quantity) {
         boolean exi= Seller.searchForProduct(product.getName());
-        if (exi != false && product.getQuantity() >= quantity) {
+        if (exi && product.getQuantity() >= quantity) {
             Order order = new Order(orderName, orderId,sellerId, orderDate, product, quantity); 
             try{
                 create_files or= new create_files();
                 String path= "C:\\Users\\ibgam\\Documents\\GitHub\\pl2_project\\Orders\\";
                 or.Create(path,orderName);
-                or.Append(path, "\n"+"Order ID:"+order.getOrderId()
-                +"\t Seller ID:"+order.getSellerId()
-                +"\t Order Date:"+order.getOrderDate()
-                +"\t Quantity:"+product.getQuantity()
+                or.Append(path, "\n"+"Order ID:"+String.valueOf(order.getOrderId())
+                +"\t Seller ID:"+String.valueOf(order.getSellerId())
+                +"\t Order Date:"+String.valueOf(order.getOrderDate())
+                +"\t Quantity:"+String.valueOf(product.getQuantity())
                 +"\n" + order.toString());
+                int x=product.getQuantity();
+                product.setQuantity(x++);
             }catch (Exception ex) {
                 System.out.println(ex.getMessage());
             } 
@@ -106,13 +110,21 @@ public class Seller extends Employee{
     }
 
     //cancel an order
-    public boolean cancelOrder(String orderName){
-        File orderFile= new File(orderName+".txt");
-        if(!orderFile.exists())return false;
-        orderFile.delete();
-        return true; 
+    public void cancelOrder(Order order){
+        File orderFile= new File(order.getOrderName()+".txt");
+        if(!orderFile.exists()) System.out.println("order is not exist");
+        else{ 
+            create_files canceled= new create_files();
+            String path="C:\\Users\\ibgam\\Documents\\GitHub\\pl2_project\\orders\\cancledOrders\\";
+            canceled.Create(path, order.getOrderName());
+            canceled.Append(path, order.toString());
+            orderFile.delete();
+            int x=order.getProducts().getQuantity();
+            order.getProducts().setQuantity(x++);
+        } 
     }
-
 }
+
+
 
 
