@@ -14,7 +14,7 @@ public class Inventory_Employee extends Employee{
         super(username, password, "Inventory_Employee");
         this.id_in++;
     }
-    int gettid_in(int id)
+    int gettid_in(int id_in)
     {
         return this.id_in;
     }
