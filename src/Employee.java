@@ -1,38 +1,43 @@
 public class Employee extends person {
-     
-     private String Type;
-    public Employee( String username, String password,String Type) {
-        super(username, password);
-        this.Type=Type;
-       
-    }
-   @Override
-      public  void setusername(String username){
-          this.username=username;
-      }
-       @Override
-       public String getusername()
-       {
-           return this.username;
-       }
-    
- 
+    private String type;
 
-   @Override
+    public Employee(int id, String Username, String password, String type) {
+        super(Username,  password,type, id);
+        this.type = type;
+    }
+
+    @Override
+    public void setusername(String username) {
+    }
+
+    @Override
+    public String getusername() {
+        return null;
+    }
+
+    public void setId(String  id) {
+        this.id =  Integer.parseInt(id);
+    }
+
+    public String  getId() {
+        return String.valueOf(id);
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }
 
-   @Override
     public String getPassword() {
         return password;
     }
-  
-     public void setType(String type) {
-        this.Type = type;
-     }
-    public String getType() {
-        return this.Type;
+
+    public void setType(String type) {
+        this.type = type;
     }
+
+    public String getType() {
+        return type;
+    }
+
 }
 

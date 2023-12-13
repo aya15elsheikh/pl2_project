@@ -8,8 +8,20 @@ import java.util.Scanner;
 import java.io.FileWriter;
 public class Inventory_Employee extends Employee{
 
+<<<<<<<<< Temporary merge branch 1
    public Inventory_Employee(String username, String password, String Type, int id) {
-        super(username, password, Type, id);
+        super(id, username, password, Type);
+=========
+    static private  int id_in=1;
+
+    public Inventory_Employee(String username, String password, String Type) {
+        super(username, password, "Inventory_Employee");
+        this.id_in++;
+    }
+    int gettid_in(int id_in)
+    {
+        return this.id_in;
+>>>>>>>>> Temporary merge branch 2
     }
 
     public boolean Add_product (String name  , int id , Date expiry ,String section , int quantity,int Special_Range )
