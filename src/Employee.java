@@ -2,11 +2,21 @@ public class Employee extends person {
     private String type;
 
     public Employee(int id, String Username, String password, String type) {
-        super(Username,  password, id);
+        super(Username,  password,type, id);
         this.type = type;
     }
-    
-     public void setId(String  id) {
+
+    @Override
+    public void setusername(String username) {
+
+    }
+
+    @Override
+    public String getusername() {
+        return null;
+    }
+
+    public void setId(String  id) {
         this.id =  Integer.parseInt(id);
     }
 
