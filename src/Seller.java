@@ -91,7 +91,7 @@ public class Seller extends Employee{
         if (file.exists()){
               try
             {   create_files c= new create_files();
-                String path =  "D:\\FCAI\\y2 sem 1\\pl2\\javacodes\\pl2 project\\orders\\"+orderName+".txt";
+                String path =  "C:\\Users\\ibgam\\Documents\\GitHub\\pl2_project\\Orders\\"+orderName+".txt";
                 System.out.println(Arrays.toString(c.Read(path)));
             }catch (Exception ex){
                 System.out.println(ex.getMessage());
@@ -113,14 +113,6 @@ public class Seller extends Employee{
         return true; 
     }
 
-
-public static void main(String[] args) {
-
-      //chack the Seller class methods
-      
-
-
-    }
-
 }
+
 
