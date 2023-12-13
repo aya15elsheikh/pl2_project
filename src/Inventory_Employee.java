@@ -74,7 +74,7 @@ public class Inventory_Employee extends Employee{
         in.close();
         pw.flush();
         pw.close();
-       new File (oldfile).delete();
+        new File (oldfile).delete();
         File dump=new File(oldfile);
         newfile.renameTo(dump);
             System.out.println("update is succssful");
