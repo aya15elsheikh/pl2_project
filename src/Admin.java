@@ -1,14 +1,11 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
-public class Admin {
-    private String username;
-    private String password;
+public class Admin extends person {
     private List <Employee> employees;
     private Scanner scanner;
 
-    public Admin() {
+    public Admin(String id, String Username, String password) {
+        super( Username , password , Integer.parseInt(id));
         employees = new ArrayList<>();
         scanner = new Scanner(System.in);
     }
@@ -30,7 +27,10 @@ public class Admin {
         String password = scanner.nextLine();
         System.out.print("Enter employee type: ");
         String type = scanner.nextLine();
-
+        System.out.print("Enter employee email: ");
+        String email = scanner.nextLine();
+        System.out.print("Enter employee phone number : ");
+        int p_num = scanner.nextInt();
         Employee employee = new Employee(id,username , password, type);
         employees.add(employee);
 
