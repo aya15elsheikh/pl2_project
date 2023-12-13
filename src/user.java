@@ -1,71 +1,30 @@
-mport java.io.*;
-
+import java.io.*;
 import java.util.*;
 
 class User {
-    private String username;
-    private String password;
-    private String email;
-    private int phoneNumber;
-    private static int id = 0;
-    static List<User> users = new ArrayList<>();
+    String username;
+    String password;
+    String email;
+    int phoneNumber;
+    int id;
 
+    User(String username, String password, String email, int phoneNumber, int id) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.id = id;
+    }
+}
+
+class Main {
+    static List<User> users = new ArrayList<>();
+    static Random rand = new Random();
     static User currentUser = null;
 
-    public User(String username, String password, String email, int phoneNumber, int id) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        id++;
-    }
-
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public static int getId() {
-        return id;
-    }
-
-
-
-    Scanner scanner = new Scanner(System.in);
-
-    public void AddUser() throws IOException {
-
-
-
-
+    public static void main(String[] args) throws IOException {
+        loadUsers();
+        Scanner scanner = new Scanner(System.in);
         while (true) {
             if (currentUser == null) {
                 System.out.println("1. Login\n2. Sign Up");
@@ -106,7 +65,7 @@ class User {
                             System.out.println("Invalid phone number");
                         }
                     }
-
+                    int id = rand.nextInt(10000);
                     users.add(new User(username, password, email, phoneNumber, id));
                     saveUsers();
                     System.out.println("Sign up successful! Your ID is: " + id);
