@@ -151,31 +151,38 @@ public class Menu {
           double percentage = input.nextDouble();
           Marketing.add_offer(type,timePerdays,percentage);
           System.out.println("offer added Successfully");
+          break;
       case 2:
           System.out.println("Enter your Report details");
-          System.out.println("Enter report number ");
+          System.out.println("number: ");
           int number = input.nextInt();
-          System.out.println("Enter report description ");
+          System.out.println("description: ");
           String description  = input.nextLine();
           Products product_info = new Products();
           System.out.println("Enter product details");
           System.out.println("name : ");
           String name  = input.nextLine();
           product_info.setName(name);
+          product_info.getName();
           System.out.println("price: ");
           int price = input.nextInt();
           product_info.setPrice(price);
+          product_info.getPrice();
           System.out.println("Quantity: ");
           int quantity = input.nextInt();
           product_info.setQuantity(quantity);
+          product_info.getQuantity();
           System.out.println("Expirey date: ");
           String date = input.nextLine();
           product_info.setExpiry_Date(date);
+          product_info.getExpiry_Date();
           System.out.println("its special range ");
           int range = input.nextInt();
           product_info.setSpecial_Range(range);
+          product_info.getSpecial_Range();
           Marketing.add_report(number,description,product_info);
           System.out.println("report added Successfully");
+          break;
       default:
           System.out.println("invalid choice :(");
   }
@@ -190,6 +197,7 @@ public class Menu {
 
     public static void main (String [] args)
     {
-        Menu.Inventory_interface("Aya","1112","IE",11);
+        //Menu.Inventory_interface("Aya","1112","IE",11);
+        Menu.marketing_interface();
     }
 }

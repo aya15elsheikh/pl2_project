@@ -1,40 +1,59 @@
+
 import java.io.*;
 
 import java.util.*;
+public  class User extends person {
 
-class User {
-    private String username;
-    private String password;
     private String email;
     private int phoneNumber;
-    private static int id = 0;
+    static private int id_us = 0;
+    private int id;
+
+
+
     static List<User> users = new ArrayList<>();
+
+    public User( String username,String Type, String password, String email, int phoneNumber) {
+        super(username, password,"User");
+        this.id_us++;
+        this.id=id;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+
+
+    }
 
     static User currentUser = null;
 
-    public User(String username, String password, String email, int phoneNumber, int id) {
+
+    @Override
+    public void setusername(String username) {
         this.username = username;
+    }
+
+    @Override
+    public String getusername() {
+        return this.username;
+    }
+
+
+    @Override
+    public void setPassword(String password) {
         this.password = password;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        id++;
     }
 
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
+    @Override
     public String getPassword() {
         return password;
     }
-
-    public void setPassword(String password) {
-        this.password = password;
+    @Override
+    public String getType()
+    {
+        return this.Type;
+    }
+    @Override
+    public void setType(String Type) {
+        this.Type=Type;
     }
 
     public String getEmail() {
@@ -53,15 +72,13 @@ class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public static int getId() {
+    public int getid() {
         return id;
     }
 
 
-
-    Scanner scanner = new Scanner(System.in);
-
     public void AddUser() throws IOException {
+        Scanner scanner = new Scanner(System.in);
 
         while (true) {
             if (currentUser == null) {
@@ -85,10 +102,12 @@ class User {
                         System.out.println("Username already exists!");
                         continue;
                     }
+                    System.out.println("Enter type:");
+                    String type = scanner.nextLine();
                     System.out.println("Enter password:");
                     String password = scanner.nextLine();
                     System.out.println("Enter email:");
-                    String email = scanner.nextLine();
+                    email = scanner.nextLine();
                     if (!email.contains("@")) {
                         System.out.println("That's an invalid email");
                         continue;
@@ -104,12 +123,16 @@ class User {
                         }
                     }
 
-                    users.add(new User(username, password, email, phoneNumber, id));
-                    saveUsers();
-                    System.out.println("Sign up successful! Your ID is: " + id);
+
+                    users.add(new User(username, Type, password, email, phoneNumber));
+                    saveUsers(type);
+
+                    System.out.println("Sign up successful! Your ID is: " + id_us);
                 }
             } else {
-                System.out.println("1. Update\n2. Logout");
+
+Shahd Emam, [12/13/2023 10:05 PM]
+System.out.println("1. Update\n2. Logout");
                 int choice = scanner.nextInt();
                 scanner.nextLine();
                 if (choice == 1) {
@@ -124,10 +147,15 @@ class User {
                                 System.out.println("Username already exists!");
                                 continue;
                             }
+                            create_files file = new create_files();
+                            file.update_file("C:\\Users\\janaw\\Downloads\\CLONE\\pl2_project\\pl2_project\\" + Type + ".txt", currentUser.username, newUsername);
                             currentUser.username = newUsername;
                         } else if (updateChoice == 2) {
                             System.out.println("Enter new password:");
-                            currentUser.password = scanner.nextLine();
+                            String newPassword = scanner.nextLine();
+                            create_files file = new create_files();
+                            file.update_file("C:\\Users\\janaw\\Downloads\\CLONE\\pl2_project\\pl2_project\\" + Type + ".txt", currentUser.password, newPassword);
+                            currentUser.password = newPassword;
                         } else if (updateChoice == 3) {
                             while (true) {
                                 System.out.println("Enter new email:");
@@ -135,6 +163,8 @@ class User {
                                 if (!newEmail.contains("@")) {
                                     System.out.println("That's an invalid email");
                                 } else {
+                                    create_files file = new create_files();
+                                    file.update_file("C:\\Users\\janaw\\Downloads\\CLONE\\pl2_project\\pl2_project\\" + Type + ".txt", currentUser.email, newEmail);
                                     currentUser.email = newEmail;
                                     break;
                                 }
@@ -142,8 +172,11 @@ class User {
                         } else if (updateChoice == 4) {
                             while (true) {
                                 System.out.println("Enter new phone number:");
+                                int newPhoneNumber = Integer.parseInt(scanner.nextLine());
                                 try {
-                                    currentUser.phoneNumber = Integer.parseInt(scanner.nextLine());
+                                    create_files file = new create_files();
+                                    file.update_file("C:\\Users\\janaw\\Downloads\\CLONE\\pl2_project\\pl2_project\\" + Type + ".txt", String.valueOf(currentUser.phoneNumber), String.valueOf(newPhoneNumber));
+                                    currentUser.phoneNumber = newPhoneNumber;
                                     break;
                                 } catch (NumberFormatException e) {
                                     System.out.println("Invalid phone number");
@@ -152,7 +185,8 @@ class User {
                         } else {
                             break;
                         }
-                        saveUsers();
+
+                        saveUsers(Type);
                         System.out.println("Update successful!");
                     }
                 } else if (choice == 2) {
@@ -164,7 +198,8 @@ class User {
 
     }
 
-    static boolean login(String username, String password) {
+Shahd Emam, [12/13/2023 10:05 PM]
+static boolean login(String username, String password) {
         for (User user : users) {
             if (user.username.equals(username) && user.password.equals(password)) {
                 currentUser = user;
@@ -183,26 +218,14 @@ class User {
         return false;
     }
 
-    static void loadUsers() throws IOException {
-        File file = new File("users.txt");
-        if (!file.exists()) {
-            return;
-        }
-        BufferedReader reader = new BufferedReader(new FileReader(file));
-        String line;
-        while ((line = reader.readLine()) != null) {
-            String[] parts = line.split(",");
-            users.add(new User(parts[0], parts[1], parts[2], Integer.parseInt(parts[3]), Integer.parseInt(parts[4])));
-        }
-        reader.close();
-    }
 
-    static void saveUsers() throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter("users.txt"));
+    static void saveUsers(String Type) throws IOException {
+        String path ="C:\\Users\\janaw\\Downloads\\CLONE\\pl2_project\\pl2_project\\";
+        create_files file = new create_files();
+        file.Create(path,Type);
         for (User user : users) {
-            writer.write(user.username + "," + user.password + "," + user.email + "," + user.phoneNumber + "," + user.id);
-            writer.newLine();
-        }
-        writer.close();
-    }
+            file.Append(path+Type+".txt",user.username + "," + user.password + "," + user.email + "," + user.phoneNumber + "," + user.id+"\n");
+        }}
+
+
 }
