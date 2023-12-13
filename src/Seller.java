@@ -4,8 +4,14 @@ import java.util.*;
 public class Seller extends Employee{
     
     //public Seller(){} 
-    public Seller(int sellerId, String sellerName, String password, String type){
-        super(sellerId,sellerName, password, "Seller");
+   static private int id_s=0;
+    public Seller(  String username, String password,String Type) {    
+        super( username, password,"seller");
+        this.id_s++;
+    }
+     int gettid_s(int id_s)
+    {
+        return this.id_s;
     }
 
     //setters:
